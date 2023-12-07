@@ -1,6 +1,6 @@
 # ruby-email-delete
 
-This sample will show you to easily delete an email with the Nylas Ruby SDK.
+This sample will show you to easily delete your emails with the Nylas Ruby SDK.
 
 ## Setup
 
@@ -13,9 +13,8 @@ This sample will show you to easily delete an email with the Nylas Ruby SDK.
 You'll need the following values:
 
 ```text
-ACCESS_TOKEN = 
-CLIENT_ID = 
-CLIENT_SECRET = 
+V3_TOKEN =
+GRANT_ID =
 ```
 
 Add the above values to a new `.env` file:
@@ -39,11 +38,7 @@ Run the script using the `ruby` command:
 $ ruby DeleteEmail.rb
 ```
 
-When your message is successfully deleted, you'll get the following output in your terminal:
-
-```text
-Your message was succesfully deleted
-```
+You will a notification saying that your email was successfully deleted.
 
 ## Learn more
 
