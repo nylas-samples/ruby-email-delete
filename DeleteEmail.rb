@@ -1,27 +1,13 @@
-#!/usr/bin/env ruby
+# Load gems
 require 'dotenv/load'
-require 'nylas'
-require 'date'
+require 'nylas'	
 
-nylas = Nylas::API.new(
-    app_id: ENV["CLIENT_ID"],
-    app_secret: ENV["CLIENT_SECRET"],
-    access_token: ENV["ACCESS_TOKEN"]
+# Initialize Nylas client
+nylas = Nylas::Client.new(
+	api_key: ENV["V3_TOKEN"]
 )
 
-messageId = "<MESSAGE_ID>"
-
-labelsDict = Hash.new
-labels = nylas.labels
-labels.each{ |label|
-	labelsDict[label.name] = label.id
-}
-
-begin
-	message = nylas.messages.find(messageId)
-	message.update(label_ids: [labelsDict["trash"]])
-	message.save
-	puts "Your message was succesfully deleted"
-rescue => error
-	puts error.message
+status, _ =  nylas.messages.destroy(identifier: ENV["GRANT_ID"], message_id: "<EMAIL_ID>")
+if status
+    puts "Email successfully deleted"
 end
